@@ -1,0 +1,133 @@
+import random
+
+def get_info():
+    name = input("Please enter your name. ")
+    print(f"Hello, {name}, I hope your doing well. I just need one more piece of info.")
+    age = input("How old are you? ")
+    return name, age
+
+def meh_response(name, age):
+    help = input("Well we all have days like this, but we're all human — except me, of course! So what is it? School, Work, or Friends? ").lower()
+    age = int(age)
+
+    if 15 < age <= 19:
+        if help == 'school':
+            print("Yeah, high school is tough and you still have a lot of it left 😞. But remember, school isn't just a boring chore — even if it may feel like it. It prepares you for the future and is a good opportunity to learn and grow. So keep at it!")
+        elif help == 'work':
+            print("Balancing work and high school is a CHALLENGE. But you're gaining valuable experience and skills that are necessary to survive this game we call life. So don't quit now — keep getting that bag and education!")
+        elif help == 'friends':
+            print("Well, I’m just a couple lines of code, but even I know how hard it is to keep friends while dealing with high school. But the good news is that you still have a long time left to make friends and HAVE FUN!")
+
+    elif 19 < age <= 22:
+        if help == 'school':
+            print("You're finally in college The big Break! But I guess it isn't living up to your expectations huh. Well you just started, so give it a chance! ")
+        elif help == 'work':
+            print("Work can be draining sometimes, especially with college. But remember, its giving you valuable work experience. So don't quit!")
+        elif help == 'friends':
+            print("Your in the prime time of your life to make new friends and meet new people. But always remember. A few good friendships always beat out a lot of average ones!")
+
+    elif age > 22:
+        if help == 'school':
+            print("Chasing that degree! You're on the right track! But remember, Success is the sum of small efforts, repeated day in and day out. sO don't quit. ")
+        elif help == 'work':
+            print("Finally in the work force and getting that dough! Remember, what you do now will only affect your future self. So find a job you're passionate about, and work like your future depends on it!....because it does.")
+        elif help == 'friends':
+            print("Maintaining friendships as an adult definetly isn't easy. But they are a core part of life. So get out there, have fun and make friends!")
+
+def bad_response(name, age):
+    help_topic = input("Well we all have days like this, but we're all human — except me, of course! So what is it? School, Work, or Friends? ").lower()
+    age = int(age)
+
+    if 15 < age <= 19:
+        if help_topic == 'school':
+            print("High school if tough. But remember. You're braver than you believe, and stronger than you seem, and smarter than you think.")
+        elif help_topic == 'work':
+            print("You're off to a great start. Your in high school and you have a job. But remeber, youre mental health is more important than any money you'll ever make. So if youre not feeling well because of this job, It may be time to quit. ")
+        elif help_topic == 'friends':
+            print("Friends come and go, and if your friendships feel one-sided or toxic, don't be afraid to cut them off.")
+
+    elif 19 < age <= 22:
+        if help_topic == 'school':
+            print("College or university can be stressful, but you're learning how to manage responsibility and freedom.")
+        elif help_topic == 'work':
+            print("Work life can be tiring, but every experience brings new skills and growth.")
+        elif help_topic == 'friends':
+            print("Adult friendships take effort, but the quality of friends matters more than quantity.")
+
+    elif age > 22:
+        if help_topic == 'school':
+            print("Learning never stops! Even beyond school, life has lessons that shape you.")
+        elif help_topic == 'work':
+            print("Work may be challenging, but perseverance and balance will lead to success.")
+        elif help_topic == 'friends':
+            print("Friendships change over time. Focus on meaningful connections and support those you care about.")
+
+def funfacts():
+    facts = [
+
+    ]
+    print(f'{random.choice(facts)}')
+
+def riddles(name,):
+    riddles_list = [
+        ("I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?", "An echo"),
+        ("The more of this there is, the less you see. What is it?", "Darkness"),
+        ("I’m tall when I’m young, and I’m short when I’m old. What am I?", "A candle"),
+        ("What has keys but can’t open locks?", "A piano"),
+        ("I’m always in front of you, but can’t be seen. What am I?", "The future"),
+        ("The more you take, the more you leave behind. What am I?", "Footsteps"),
+        ("I have branches, but no fruit, trunk, or leaves. What am I?", "A bank"),
+        ("What has to be broken before you can use it?", "An egg"),
+        ("I have cities, but no houses; forests, but no trees; and water, but no fish. What am I?", "A map"),
+        ("What can travel around the world while staying in a corner?", "A stamp"),
+        ("I can fly without wings. I can cry without eyes. Wherever I go, darkness flies. What am I?", "Clouds or wind"),
+        ("What is always coming, but never arrives?", "Tomorrow"),
+        ("I shave every day, but my beard stays the same. What am I?", "A barber"),
+        ("What begins with T, ends with T, and has T in it?", "A teapot"),
+        ("The more you take me, the more you leave behind. What am I?", "Footsteps")
+    ]
+
+    print("Here's a riddle!")
+    riddle, answer = random.choice(riddles_list)
+    print(f"\n {riddle}")
+    give = input('Whats the answer?').lower()
+    if give == answer.lower():
+     print('You got it!')
+    else:
+        print(f'Sorry {name}, the correct answer was {answer} .')
+
+
+
+def ch_at(name, age):
+    while True:
+        choice = input("How may I help you? (1. A conversation, 2. A riddle, 3. Fun Fact, or 4. Quit): ")
+
+        if choice == "1":
+            feeling = input(f"How are you feeling right now {name}? Good, Bad or Meh? ").lower()
+            if feeling == 'good':
+                print("That's great to hear! Keep up the positive vibes and I hope your day stays good!")
+            elif feeling == 'meh':
+                meh_response(name, age)
+            elif feeling == 'bad':
+                bad_response(name, age)
+
+        elif choice == "2":
+            riddles(name)
+        elif choice == "3":
+            funfacts()
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("I didn't understand what you said.")
+
+begin = input('Start? (Yes/No) ').lower()
+
+if begin == 'yes':
+    name, age = get_info()
+    ch_at(name, age)
+    meh_response(name, age)
+elif begin == 'no':
+    print('Goodbye!')
+else:
+    print('I didnt understand what you said.')
